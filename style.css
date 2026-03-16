@@ -579,10 +579,10 @@ input[type="text"]:focus {
         padding: 0.5rem;
     }
 
-    /* Prevent ultra-wide grid from forcing the viewport to zoom; allow horizontal scroll instead */
+    /* Keep grid layout but allow horizontal scrolling on small screens */
     .tracker-grid {
-        width: 100%;
-        display: block;
+        width: max-content;
+        display: grid;
     }
 
     .habit-name-cell {

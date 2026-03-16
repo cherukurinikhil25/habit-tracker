@@ -117,11 +117,21 @@ document.addEventListener('DOMContentLoaded', () => {
         cornerCell.textContent = 'Habit / Day';
         trackerGrid.appendChild(cornerCell);
 
+        // Determine real today for highlighting
+        const realToday = new Date();
+        const realTodayYear = realToday.getFullYear();
+        const realTodayMonth = realToday.getMonth();
+        const realTodayDay = realToday.getDate();
+
         // Top row (Days)
         for (let day = 1; day <= daysInMonth; day++) {
             const dayCell = document.createElement('div');
             dayCell.className = 'grid-cell header-cell';
             dayCell.textContent = day;
+            // If viewing the month that contains the real today, mark the day's column
+            if (year === realTodayYear && month === realTodayMonth && day === realTodayDay) {
+                dayCell.classList.add('today-column');
+            }
             trackerGrid.appendChild(dayCell);
         }
 
@@ -154,6 +164,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 cell.className = `grid-cell day-cell ${status ? status : ''}`;
                 cell.dataset.habitId = habit.id;
                 cell.dataset.date = dateStr;
+                // Highlight today's column cells when applicable
+                if (year === realTodayYear && month === realTodayMonth && day === realTodayDay) {
+                    cell.classList.add('today-column');
+                }
 
                 cell.addEventListener('click', function () {
                     toggleCompletion(habit.id, dateStr, this);

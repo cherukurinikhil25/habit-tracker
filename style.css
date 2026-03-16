@@ -413,6 +413,22 @@ input[type="text"]:focus {
     box-shadow: inset 0 0 10px rgba(244, 63, 94, 0.2);
 }
 
+/* Highlight today's column (subtle, decent emphasis) */
+.header-cell.today-column {
+    background: linear-gradient(180deg, rgba(99,102,241,0.08), rgba(16,185,129,0.03));
+    border-color: rgba(99,102,241,0.25);
+    color: var(--primary-color);
+    box-shadow: 0 6px 18px rgba(99,102,241,0.06);
+}
+
+.day-cell.today-column {
+    background: rgba(99,102,241,0.04);
+    border-color: rgba(99,102,241,0.18);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
+    transform: translateZ(0);
+}
+
+
 .day-cell.failed::after {
     content: '✕';
     color: var(--danger-color);

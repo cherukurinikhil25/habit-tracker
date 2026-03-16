@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Habit Tracker</title>
+    <!-- Google Fonts for typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header>
+            <div class="header-content glass-panel" style="padding: 1rem 2rem; margin-bottom: -0.5rem; border-radius: var(--radius-full);">
+                <h1>Habit Tracker</h1>
+                <div class="header-controls">
+                    <button id="theme-toggle" class="btn-icon" aria-label="Toggle Dark Mode">
+                        <svg id="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                        <svg id="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="stats-container">
+                <div class="stat-card glass-panel">
+                    <span class="stat-label">Tasks Completed Today</span>
+                    <span id="total-completed" class="stat-value">0</span>
+                </div>
+                <div class="stat-card glass-panel">
+                    <span class="stat-label">Completion Rate</span>
+                    <span id="completion-rate" class="stat-value">0%</span>
+                </div>
+            </div>
+        </header>
+
+        <main>
+            <section class="controls-section glass-panel">
+                <div class="month-selector">
+                    <button id="prev-month" class="btn-secondary">&larr;</button>
+                    <h2 id="current-month-display">January 2024</h2>
+                    <button id="next-month" class="btn-secondary">&rarr;</button>
+                </div>
+                <!-- We can place an "Add Habit" input area here -->
+                <form id="add-habit-form" class="add-habit-form">
+                    <input type="text" id="new-habit-input" placeholder="Enter new habit..." required>
+                    <button type="submit" class="btn-primary">Add Habit</button>
+                </form>
+            </section>
+
+            <section class="tracker-section glass-panel">
+                <div class="tracker-scroll-container">
+                    <div id="tracker-grid" class="tracker-grid"></div>
+                </div>
+            </section>
+
+            <section class="chart-section glass-panel">
+                <div class="chart-container">
+                    <canvas id="score-chart"></canvas>
+                </div>
+            </section>
+        </main>
+    </div>
+    
+    <!-- Modal for Edit/Delete -->
+    <div id="habit-modal" class="modal">
+        <div class="modal-content">
+            <h3>Edit Habit</h3>
+            <input type="text" id="edit-habit-input">
+            <div class="modal-actions">
+                <button id="cancel-modal-btn" type="button" class="btn-secondary">Cancel</button>
+                <div class="modal-right-actions" style="display: flex; gap: 0.5rem; margin-left: auto;">
+                    <button id="delete-habit-btn" type="button" class="btn-danger">Delete</button>
+                    <button id="save-habit-btn" type="button" class="btn-primary">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
